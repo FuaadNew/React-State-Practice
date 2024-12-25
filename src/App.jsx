@@ -6,31 +6,32 @@ const Button = ({onClick,name}) =>{
   )
 }
 
-const Display = ({stringName,name}) =>{
-  return (
-    <div>{stringName} {name}</div>
-  )
-}
-const Total = ({good,neutral,bad}) =>{
-  return (
-    <div>all {good + neutral + bad}</div>
-  )
+const StatisticLine = ({text,value}) =>{
+ 
 
+  return (
+    <div>{text} {value}</div>
+  )
 }
+
+
 
 const Statistics = ({good,neutral,bad}) =>{
+  const total = good - bad
   const allFeedback = good + neutral + bad
+  const average = allFeedback ? total / allFeedback : 0
+  const posPercentage = allFeedback ? (good/ allFeedback) * 100: 0
   if (allFeedback === 0){
     return <div>No feedback given </div>
   } else{
     return (
       <div>
-    <Display stringName="good"name ={good} ></Display>
-      <Display stringName="neutral"name ={neutral} ></Display>
-      <Display stringName="bad"name ={bad} ></Display>
-      <Total good = {good} neutral={neutral} bad = {bad}></Total>
-      <Average good = {good} neutral={neutral} bad = {bad}></Average>
-      <Positive good = {good} neutral={neutral} bad = {bad}></Positive>
+    <StatisticLine text="good"value ={good} ></StatisticLine>
+      <StatisticLine text="neutral"value ={neutral} ></StatisticLine>
+      <StatisticLine text="bad"value ={bad} ></StatisticLine>
+      <StatisticLine text = "all" value={good + neutral + bad}></StatisticLine>
+      <StatisticLine text = "average" value = {average}></StatisticLine>
+      <StatisticLine text = "positive" value = {posPercentage}></StatisticLine>
       </div>
     );
   
@@ -39,26 +40,6 @@ const Statistics = ({good,neutral,bad}) =>{
   
 }
 
-const Average = ({good,neutral,bad}) =>{
-  const total = good - bad
-  const allFeedback = good + neutral + bad
-  const average = allFeedback ? total / allFeedback : 0
-  return (
-
-    <div>Average {average}</div>
-  )
-}
-
-
-const Positive = ({good,neutral,bad}) =>{
-  const allFeedback = good + neutral + bad
-  const posPercentage = allFeedback ? (good/ allFeedback) * 100: 0
-
-  return (
-    <div>positive {posPercentage} %</div>
-  )
-
-}
 
 
 
