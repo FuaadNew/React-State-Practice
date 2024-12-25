@@ -11,7 +11,33 @@ const Display = ({stringName,name}) =>{
     <div>{stringName} {name}</div>
   )
 }
+const Total = ({good,neutral,bad}) =>{
+  return (
+    <div>all {good + neutral + bad}</div>
+  )
 
+}
+
+const Average = ({good,neutral,bad}) =>{
+  const total = good - bad
+  const allFeedback = good + neutral + bad
+  const average = allFeedback ? total / allFeedback : 0
+  return (
+
+    <div>Average {average}</div>
+  )
+}
+
+
+const Positive = ({good,neutral,bad}) =>{
+  const allFeedback = good + neutral + bad
+  const posPercentage = allFeedback ? (good/ allFeedback) * 100: 0
+
+  return (
+    <div>positive {posPercentage} %</div>
+  )
+
+}
 
 
 const App = () =>{
@@ -45,6 +71,10 @@ const App = () =>{
     <Display stringName="good"name ={good} ></Display>
     <Display stringName="neutral"name ={neutral} ></Display>
     <Display stringName="bad"name ={bad} ></Display>
+    <Total good = {good} neutral={neutral} bad = {bad}></Total>
+    <Average good = {good} neutral={neutral} bad = {bad}></Average>
+    <Positive good = {good} neutral={neutral} bad = {bad}></Positive>
+    
   </div>
   
 
