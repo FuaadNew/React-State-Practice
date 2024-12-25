@@ -19,17 +19,24 @@ const Total = ({good,neutral,bad}) =>{
 }
 
 const Statistics = ({good,neutral,bad}) =>{
-  return (
-    <div>
-  <Display stringName="good"name ={good} ></Display>
-    <Display stringName="neutral"name ={neutral} ></Display>
-    <Display stringName="bad"name ={bad} ></Display>
-    <Total good = {good} neutral={neutral} bad = {bad}></Total>
-    <Average good = {good} neutral={neutral} bad = {bad}></Average>
-    <Positive good = {good} neutral={neutral} bad = {bad}></Positive>
-    </div>
-  );
+  const allFeedback = good + neutral + bad
+  if (allFeedback === 0){
+    return <div>No feedback given </div>
+  } else{
+    return (
+      <div>
+    <Display stringName="good"name ={good} ></Display>
+      <Display stringName="neutral"name ={neutral} ></Display>
+      <Display stringName="bad"name ={bad} ></Display>
+      <Total good = {good} neutral={neutral} bad = {bad}></Total>
+      <Average good = {good} neutral={neutral} bad = {bad}></Average>
+      <Positive good = {good} neutral={neutral} bad = {bad}></Positive>
+      </div>
+    );
+  
 
+  }
+  
 }
 
 const Average = ({good,neutral,bad}) =>{
