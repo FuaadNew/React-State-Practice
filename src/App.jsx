@@ -18,6 +18,20 @@ const Total = ({good,neutral,bad}) =>{
 
 }
 
+const Statistics = ({good,neutral,bad}) =>{
+  return (
+    <div>
+  <Display stringName="good"name ={good} ></Display>
+    <Display stringName="neutral"name ={neutral} ></Display>
+    <Display stringName="bad"name ={bad} ></Display>
+    <Total good = {good} neutral={neutral} bad = {bad}></Total>
+    <Average good = {good} neutral={neutral} bad = {bad}></Average>
+    <Positive good = {good} neutral={neutral} bad = {bad}></Positive>
+    </div>
+  );
+
+}
+
 const Average = ({good,neutral,bad}) =>{
   const total = good - bad
   const allFeedback = good + neutral + bad
@@ -38,6 +52,7 @@ const Positive = ({good,neutral,bad}) =>{
   )
 
 }
+
 
 
 const App = () =>{
@@ -68,12 +83,7 @@ const App = () =>{
     <Button onClick= {handleClick} name = "neutral">neutral</Button>
     <Button onClick= {handleClick} name = "bad">bad</Button>
     <h1>statistics</h1>
-    <Display stringName="good"name ={good} ></Display>
-    <Display stringName="neutral"name ={neutral} ></Display>
-    <Display stringName="bad"name ={bad} ></Display>
-    <Total good = {good} neutral={neutral} bad = {bad}></Total>
-    <Average good = {good} neutral={neutral} bad = {bad}></Average>
-    <Positive good = {good} neutral={neutral} bad = {bad}></Positive>
+    <Statistics good = {good} neutral = {neutral} bad = {bad}></Statistics>
     
   </div>
   
